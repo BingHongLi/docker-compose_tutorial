@@ -1,0 +1,18 @@
+version: '3'
+services:
+  jupyter-tutorial:
+    image: jupyter/base-notebook
+    container_name: jupyter.local
+    ports:
+      - "8888:8888"
+      - "5000:5000"
+    volumes:
+      - ./work:/home/jovyan/work/
+    command: start-notebook.sh --NotebookApp.token=''
+  mongo-tutorial:
+    image: mongo:3.4
+    container_name: mongo.local
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo/data:/data/db/
